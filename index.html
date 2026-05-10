@@ -1,305 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARNAV CREATIONS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARNAV CREATIONS</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#000000,#111111,#1a1a1a,#000000);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Lens Glow Background */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,rgba(255,255,255,0.12),transparent 70%);
+    top:-200px;
+    right:-150px;
+    border-radius:50%;
+    filter:blur(50px);
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(255,255,255,0.08),transparent 70%);
+    bottom:-200px;
+    left:-150px;
+    border-radius:50%;
+    filter:blur(60px);
+    z-index:-1;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#111111,#1f1f1f,#000000);
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 70%);
+    border-radius:50%;
+    filter:blur(40px);
+    top:-120px;
+    right:-120px;
+}
+
+h1{
+    font-size:75px;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:900px;
+    color:#cccccc;
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn{
+    padding:15px 35px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s ease;
+    font-size:16px;
+}
+
+.btn-primary{
+    background:white;
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:scale(1.08);
+}
+
+.btn-secondary{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:white;
+    color:black;
+}
+
+section{
+    padding:100px 20px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:60px;
+    font-weight:700;
+}
+
+.services{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:35px;
+    transition:0.3s ease;
+    box-shadow:0 0 20px rgba(255,255,255,0.05);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(255,255,255,0.15);
+}
+
+.card h3{
+    font-size:26px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#bbbbbb;
+    line-height:1.7;
+}
+
+.portfolio{
+    background:linear-gradient(135deg,#111111,#0a0a0a,#000000);
+}
+
+.project-video{
+    width:100%;
+    max-width:350px;
+    height:620px;
+    object-fit:cover;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.1);
+    background:#111;
+    box-shadow:0 0 30px rgba(255,255,255,0.1);
+}
+
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.about p{
+    color:#bbbbbb;
+    font-size:20px;
+    line-height:1.9;
+}
+
+.contact{
+    background:linear-gradient(135deg,#000000,#1a1a1a,#2a2a2a);
+    text-align:center;
+}
+
+.contact-box{
+    max-width:500px;
+    margin:20px auto;
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.1);
+    font-size:18px;
+    backdrop-filter:blur(10px);
+}
+
+footer{
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding:25px;
+    text-align:center;
+    color:#666;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:42px;
     }
 
-    body {
-      background: #000;
-      color: white;
-      overflow-x: hidden;
+    .hero p{
+        font-size:16px;
     }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(to bottom, #111, #000);
+    .section-title{
+        font-size:36px;
     }
 
-    
+}
 
-    h1 {
-      font-size: 70px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-
-    .hero p {
-      max-width: 900px;
-      color: #cfcfcf;
-      font-size: 20px;
-      line-height: 1.8;
-      margin-bottom: 40px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 15px 35px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s ease;
-      font-size: 16px;
-    }
-
-    .btn-primary {
-      background: white;
-      color: black;
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
-    }
-
-    .btn-secondary {
-      border: 2px solid white;
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: white;
-      color: black;
-    }
-
-    section {
-      padding: 100px 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 48px;
-      margin-bottom: 60px;
-      font-weight: 700;
-    }
-
-    .services {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 25px;
-      padding: 35px;
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: white;
-    }
-
-    .card h3 {
-      font-size: 26px;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      color: #aaa;
-      line-height: 1.7;
-    }
-
-    .portfolio {
-      background: #050505;
-    }
-
-    .portfolio-grid {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .project-video {
-      width: 100%;
-      max-width: 350px;
-      height: 620px;
-      object-fit: cover;
-      border-radius: 25px;
-      border: 1px solid #222;
-      background: #111;
-      margin: auto;
-      box-shadow: 0 0 25px rgba(255,255,255,0.08);
-    }
-
-    .about {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .about p {
-      color: #bbb;
-      font-size: 20px;
-      line-height: 1.9;
-    }
-
-    .contact {
-      background: linear-gradient(to top, #111, #000);
-      text-align: center;
-    }
-
-    .contact-box {
-      max-width: 500px;
-      margin: 20px auto;
-      background: #111;
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid #333;
-      font-size: 18px;
-    }
-
-    footer {
-      border-top: 1px solid #222;
-      padding: 25px;
-      text-align: center;
-      color: #666;
-      font-size: 14px;
-    }
-
-    @media(max-width: 768px) {
-      h1 {
-        font-size: 42px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .section-title {
-        font-size: 36px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <section class="hero">
+<section class="hero">
 
-    <h1>ARNAV CREATIONS</h1>
+<h1>ARNAV CREATIONS</h1>
 
-    <p>
-      Professional Freelance Video Editing, Cinematic Reels, YouTube Shorts,
-      Gaming Montages, Motion Graphics & Creative Social Media Content.
-    </p>
+<p>
+Professional Freelance Video Editing, Cinematic Reels,
+YouTube Shorts, Gaming Montages, Motion Graphics &
+Creative Social Media Content.
+</p>
 
-    <div class="buttons">
-      <a href="https://wa.me/919244883113?text=I%20WANT%20TO%20HIRE%20YOU" class="btn btn-primary" target="_blank">Hire Me</a>
-      <a href="https://www.instagram.com/arnavguptaog_/" class="btn btn-secondary" target="_blank">Contact Now</a>
-    </div>
-  </section>
+<div class="buttons">
 
-  <section>
-    <h2 class="section-title">My Services</h2>
+<a href="https://wa.me/919244883113?text=I%20WANT%20TO%20HIRE%20YOU"
+class="btn btn-primary" target="_blank">
+Hire Me
+</a>
 
-    <div class="services">
-      <div class="card">
-        <h3>YouTube Video Editing</h3>
-        <p>Professional cinematic edits with transitions, subtitles, effects, and storytelling.</p>
-      </div>
+<a href="https://www.instagram.com/arnavguptaog_/"
+class="btn btn-secondary" target="_blank">
+Contact Now
+</a>
 
-      <div class="card">
-        <h3>Instagram Reels & Shorts</h3>
-        <p>Fast-paced viral short-form content optimized for audience engagement.</p>
-      </div>
+<a href="https://www.youtube.com/@Arnavcreations026?sub_confirmation=1"
+class="btn btn-primary" target="_blank">
+YouTube Channel
+</a>
 
-      <div class="card">
-        <h3>Gaming Montages</h3>
-        <p>High-energy gaming edits with sync cuts, cinematic sound design, and VFX.</p>
-      </div>
+</div>
 
-      <div class="card">
-        <h3>Motion Graphics</h3>
-        <p>Creative intros, outros, logo animations, and visual effects for creators.</p>
-      </div>
+</section>
 
-      <div class="card">
-        <h3>Thumbnail Design</h3>
-        <p>Eye-catching thumbnails designed to improve clicks and viewer retention.</p>
-      </div>
+<section>
 
-      <div class="card">
-        <h3>Freelance Projects</h3>
-        <p>Custom editing solutions for influencers, businesses, brands, and creators.</p>
-      </div>
-    </div>
-  </section>
+<h2 class="section-title">My Services</h2>
 
-  <section class="portfolio">
-    <h2 class="section-title">Why Choose ARNAV CREATIONS</h2>
+<div class="services">
 
-    <div class="services">
-      <div class="card">
-        <h3>Fast Delivery</h3>
-        <p>Quick turnaround time with high-quality cinematic editing for every project.</p>
-      </div>
+<div class="card">
+<h3>YouTube Video Editing</h3>
+<p>Professional cinematic edits with transitions, subtitles, effects, and storytelling.</p>
+</div>
 
-      <div class="card">
-        <h3>Professional Quality</h3>
-        <p>Creative transitions, sound design, subtitles, motion graphics, and viral editing style.</p>
-      </div>
+<div class="card">
+<h3>Instagram Reels & Shorts</h3>
+<p>Fast-paced viral short-form content optimized for audience engagement.</p>
+</div>
 
-      <div class="card">
-        <h3>Trending Content Style</h3>
-        <p>Edits inspired by modern YouTube, Instagram Reels, Shorts, and gaming creators.</p>
-      </div>
-    </div>
-  </section>
+<div class="card">
+<h3>Gaming Montages</h3>
+<p>High-energy gaming edits with sync cuts, cinematic sound design, and VFX.</p>
+</div>
 
-  <section class="about">
-    <h2 class="section-title">About ARNAV CREATIONS</h2>
+<div class="card">
+<h3>Motion Graphics</h3>
+<p>Creative intros, outros, logo animations, and visual effects for creators.</p>
+</div>
 
-    <p>
-      ARNAV CREATIONS is a modern freelance video editing brand focused on cinematic storytelling,
-      gaming content, social media growth, and professional creative services.
-      We create impactful edits that help creators and brands stand out online.
-    </p>
-  </section>
+<div class="card">
+<h3>Thumbnail Design</h3>
+<p>Eye-catching thumbnails designed to improve clicks and viewer retention.</p>
+</div>
 
-  <section class="contact">
-    <h2 class="section-title">Let’s Work Together</h2>
+<div class="card">
+<h3>Freelance Projects</h3>
+<p>Custom editing solutions for influencers, businesses, brands, and creators.</p>
+</div>
 
-    <div class="contact-box">
-      📞 +91 9244883113
-    </div>
+</div>
 
-    <div class="contact-box">
-      ✉️ arnavminecraft026@gmail.com
-    </div>
-  </section>
+</section>
 
-  <footer>
-    © 2026 ARNAV CREATIONS • All Rights Reserved
-  </footer>
+<section class="portfolio">
+
+<h2 class="section-title">Project Preview</h2>
+
+<div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;">
+
+<video class="project-video" controls>
+<source src="Hemant Bhaiya 1.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</section>
+
+<section class="about">
+
+<h2 class="section-title">About ARNAV CREATIONS</h2>
+
+<p>
+ARNAV CREATIONS is a modern freelance video editing brand focused on
+cinematic storytelling, gaming content, social media growth,
+and professional creative services.
+</p>
+
+</section>
+
+<section class="contact">
+
+<h2 class="section-title">Contact Me</h2>
+
+<div class="contact-box">
+📞 +91 9244883113
+</div>
+
+<div class="contact-box">
+✉️ arnavminecraft026@gmail.com
+</div>
+
+<div class="contact-box">
+▶️ youtube.com/@Arnavcreations026
+</div>
+
+</section>
+
+<footer>
+© 2026 ARNAV CREATIONS • All Rights Reserved
+</footer>
 
 </body>
 </html>
