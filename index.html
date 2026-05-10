@@ -1,3 +1,8 @@
+# Advanced ARNAV CREATIONS Portfolio Website
+
+```html
+
+<!-- SAVE THIS AS index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +21,36 @@
     font-family:'Poppins',sans-serif;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:linear-gradient(135deg,#000000,#111111,#1a1a1a,#000000);
     color:white;
     overflow-x:hidden;
 }
 
-/* Lens Glow Background */
+#particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-2;
+}
+
+.cursor-glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:radial-gradient(circle,rgba(255,255,255,0.15),transparent 70%);
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:-1;
+    filter:blur(40px);
+}
 
 body::before{
     content:'';
@@ -50,6 +78,40 @@ body::after{
     z-index:-1;
 }
 
+.navbar{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#bbbbbb;
+}
+
 .hero{
     min-height:100vh;
     display:flex;
@@ -60,6 +122,7 @@ body::after{
     padding:40px 20px;
     background:linear-gradient(135deg,#111111,#1f1f1f,#000000);
     position:relative;
+    animation:float 5s ease-in-out infinite;
 }
 
 .hero::before{
@@ -74,11 +137,54 @@ body::after{
     right:-120px;
 }
 
-h1{
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+.animated-title{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:5px;
     font-size:75px;
     font-weight:800;
-    letter-spacing:3px;
     margin-bottom:20px;
+}
+
+.animated-title span{
+    opacity:0;
+    transform:translateY(80px);
+    animation:letterAnim 0.6s forwards;
+}
+
+.animated-title span:nth-child(1){animation-delay:0.1s;}
+.animated-title span:nth-child(2){animation-delay:0.2s;}
+.animated-title span:nth-child(3){animation-delay:0.3s;}
+.animated-title span:nth-child(4){animation-delay:0.4s;}
+.animated-title span:nth-child(5){animation-delay:0.5s;}
+.animated-title span:nth-child(7){animation-delay:0.6s;}
+.animated-title span:nth-child(8){animation-delay:0.7s;}
+.animated-title span:nth-child(9){animation-delay:0.8s;}
+.animated-title span:nth-child(10){animation-delay:0.9s;}
+.animated-title span:nth-child(11){animation-delay:1s;}
+.animated-title span:nth-child(12){animation-delay:1.1s;}
+.animated-title span:nth-child(13){animation-delay:1.2s;}
+.animated-title span:nth-child(14){animation-delay:1.3s;}
+.animated-title span:nth-child(15){animation-delay:1.4s;}
+
+@keyframes letterAnim{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .hero p{
@@ -112,6 +218,7 @@ h1{
 
 .btn-primary:hover{
     transform:scale(1.08);
+    box-shadow:0 0 25px rgba(255,255,255,0.5);
 }
 
 .btn-secondary{
@@ -122,6 +229,7 @@ h1{
 .btn-secondary:hover{
     background:white;
     color:black;
+    box-shadow:0 0 25px rgba(255,255,255,0.4);
 }
 
 section{
@@ -144,18 +252,39 @@ section{
 }
 
 .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    backdrop-filter:blur(10px);
+    position:relative;
+    background:rgba(255,255,255,0.04);
     border-radius:25px;
     padding:35px;
-    transition:0.3s ease;
-    box-shadow:0 0 20px rgba(255,255,255,0.05);
+    overflow:hidden;
+    transition:0.4s ease;
+    backdrop-filter:blur(12px);
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    padding:1px;
+    border-radius:25px;
+    background:linear-gradient(
+        130deg,
+        rgba(255,255,255,0.5),
+        transparent,
+        rgba(255,255,255,0.4)
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    pointer-events:none;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 30px rgba(255,255,255,0.15);
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 0 40px rgba(255,255,255,0.12);
 }
 
 .card h3{
@@ -219,9 +348,20 @@ footer{
     font-size:14px;
 }
 
+.reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:all 1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
 @media(max-width:768px){
 
-    h1{
+    .animated-title{
         font-size:42px;
     }
 
@@ -233,6 +373,18 @@ footer{
         font-size:36px;
     }
 
+    .navbar{
+        padding:15px 20px;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .nav-links{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
 }
 
 </style>
@@ -240,9 +392,43 @@ footer{
 
 <body>
 
-<section class="hero">
+<canvas id="particles"></canvas>
+<div class="cursor-glow"></div>
 
-<h1>ARNAV CREATIONS</h1>
+<nav class="navbar">
+
+<div class="logo">ARNAV CREATIONS</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="projects.html">Portfolio</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+<section class="hero reveal">
+
+<h1 class="animated-title">
+<span>A</span>
+<span>R</span>
+<span>N</span>
+<span>A</span>
+<span>V</span>
+
+<span style="width:20px;"></span>
+
+<span>C</span>
+<span>R</span>
+<span>E</span>
+<span>A</span>
+<span>T</span>
+<span>I</span>
+<span>O</span>
+<span>N</span>
+<span>S</span>
+</h1>
 
 <p>
 Professional Freelance Video Editing, Cinematic Reels,
@@ -271,38 +457,38 @@ YouTube Channel
 
 </section>
 
-<section>
+<section id="services" class="reveal">
 
 <h2 class="section-title">My Services</h2>
 
 <div class="services">
 
-<div class="card">
+<div class="card reveal">
 <h3>YouTube Video Editing</h3>
 <p>Professional cinematic edits with transitions, subtitles, effects, and storytelling.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Instagram Reels & Shorts</h3>
 <p>Fast-paced viral short-form content optimized for audience engagement.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Gaming Montages</h3>
 <p>High-energy gaming edits with sync cuts, cinematic sound design, and VFX.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Motion Graphics</h3>
 <p>Creative intros, outros, logo animations, and visual effects for creators.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Thumbnail Design</h3>
 <p>Eye-catching thumbnails designed to improve clicks and viewer retention.</p>
 </div>
 
-<div class="card">
+<div class="card reveal">
 <h3>Freelance Projects</h3>
 <p>Custom editing solutions for influencers, businesses, brands, and creators.</p>
 </div>
@@ -311,21 +497,21 @@ YouTube Channel
 
 </section>
 
-<section class="portfolio">
+<section class="portfolio reveal" id="portfolio">
 
-<h2 class="section-title">Project Preview</h2>
+<h2 class="section-title">My Creative Projects</h2>
 
-<div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;">
+<p style="text-align:center;color:#bbbbbb;font-size:20px;max-width:800px;margin:auto;line-height:1.8;">
+Explore my cinematic edits, gaming montages, reels, motion graphics and professional creative work.
+</p>
 
-<video class="project-video" controls>
-<source src="Hemant Bhaiya 1.mp4" type="video/mp4">
-</video>
-
+<div style="text-align:center;margin-top:50px;">
+<a href="projects.html" class="btn btn-primary">View All Projects</a>
 </div>
 
 </section>
 
-<section class="about">
+<section class="about reveal">
 
 <h2 class="section-title">About ARNAV CREATIONS</h2>
 
@@ -337,7 +523,7 @@ and professional creative services.
 
 </section>
 
-<section class="contact">
+<section class="contact reveal" id="contact">
 
 <h2 class="section-title">Contact Me</h2>
 
@@ -359,5 +545,286 @@ and professional creative services.
 © 2026 ARNAV CREATIONS • All Rights Reserved
 </footer>
 
+<script>
+
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove',(e)=>{
+
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+
+});
+
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll',()=>{
+
+    reveals.forEach((el)=>{
+
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+
+        if(revealTop < windowHeight - 100){
+            el.classList.add('active');
+        }
+
+    });
+
+});
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle{
+
+    constructor(){
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
+        this.size = Math.random()*2;
+        this.speedX = (Math.random()-0.5)*0.5;
+        this.speedY = (Math.random()-0.5)*0.5;
+    }
+
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+    }
+
+    draw(){
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+    }
+
+}
+
+function init(){
+
+    for(let i=0;i<120;i++){
+        particlesArray.push(new Particle());
+    }
+
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particlesArray.forEach((particle)=>{
+        particle.update();
+        particle.draw();
+    });
+
+    requestAnimationFrame(animate);
+
+}
+
+init();
+animate();
+
+</script>
+
 </body>
 </html>
+```
+
+# Create Another File Named `projects.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects • ARNAV CREATIONS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+.navbar{
+    width:100%;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(10px);
+    position:fixed;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+}
+
+.projects-page{
+    padding:140px 20px 80px;
+}
+
+.title{
+    text-align:center;
+    font-size:60px;
+    margin-bottom:60px;
+    font-weight:800;
+}
+
+.projects-grid{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+}
+
+.project-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:25px;
+    padding:20px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.4s ease;
+    backdrop-filter:blur(10px);
+}
+
+.project-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 0 40px rgba(255,255,255,0.15);
+}
+
+.project-video{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.project-title{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:600;
+}
+
+.project-desc{
+    margin-top:10px;
+    color:#bbbbbb;
+    line-height:1.7;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:60px;
+    padding:15px 35px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    border-radius:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+}
+
+.center{
+    text-align:center;
+}
+
+@media(max-width:768px){
+
+    .title{
+        font-size:40px;
+    }
+
+    .navbar{
+        padding:20px;
+    }
+
+    .project-video{
+        height:500px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">ARNAV CREATIONS</div>
+<a href="index.html">Back Home</a>
+</nav>
+
+<section class="projects-page">
+
+<h1 class="title">My Project Previews</h1>
+
+<div class="projects-grid">
+
+<div class="project-card">
+
+<video class="project-video" autoplay muted loop controls>
+<source src="Hemant Bhaiya 1.mp4" type="video/mp4">
+</video>
+
+<h2 class="project-title">Cinematic Reel Edit</h2>
+
+<p class="project-desc">
+Professional cinematic edit with smooth transitions, sound design, subtitles and modern social media style.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<video class="project-video" autoplay muted loop controls>
+<source src="dfcdsf-1.mp4" type="video/mp4">
+</video>
+
+<h2 class="project-title">Gaming Montage</h2>
+
+<p class="project-desc">
+High-energy gaming montage with sync cuts, effects, cinematic pacing and engaging visuals.
+</p>
+
+</div>
+
+</div>
+
+<div class="center">
+<a href="index.html" class="back-btn">Back To Home</a>
+</div>
+
+</section>
+
+</body>
+</html>
+```
